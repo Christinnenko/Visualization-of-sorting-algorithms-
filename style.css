@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(images/background.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  font-family: "Comfortaa", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.sorting-conteiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sorting-conteiner h1 {
+  font-size: 48px;
+  color: #fff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+  text-transform: uppercase;
+}
+
+.sorting {
+  background: #000;
+  border-radius: 30px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+}
+
+.sorting__content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.sorting input,
+.sorting select {
+  width: 500px;
+  padding: 20px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px #0077ff, 0 0 20px #0077ff, 0 0 30px #0077ff;
+  font-size: 20px;
+}
+
+.sortButton {
+  border: none;
+  box-shadow: 0 0 10px #0077ff, 0 0 20px #0077ff, 0 0 30px #0077ff;
+  padding: 20px;
+  font-size: 20px;
+  width: 500px;
+  background: #0072a8;
+}
+
+.sorting input::placeholder {
+  font-size: 20px;
+}
+
+h2 {
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+}
+
+#visualization {
+  margin-top: 20px;
+  color: white;
+  font-size: 30px;
+  text-shadow: 0 0 10px #00ff22, 0 0 20px #00ff22, 0 0 30px #00ff22;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-bar {
+  display: flex;
+  gap: 7px;
+  color: #000;
+  flex-wrap: wrap;
+}
+
+.bar {
+  display: inline-block;
+  background-color: #f6ff00;
+  box-shadow: 0 0 10px #00ff22, 0 0 20px #00ff22, 0 0 30px #00ff22;
+  padding: 30px;
+  margin: 10px;
+  font-size: 14px;
+  text-align: center;
+  transition: all 2s;
+  border-radius: 10px;
+}
