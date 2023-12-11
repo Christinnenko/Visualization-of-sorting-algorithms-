@@ -54,13 +54,20 @@ body {
   font-size: 20px;
 }
 
-.sortButton {
+.sortButton,
+.stopButton {
   border: none;
+  border-radius: 10px;
   box-shadow: 0 0 10px #0077ff, 0 0 20px #0077ff, 0 0 30px #0077ff;
   padding: 20px;
   font-size: 20px;
   width: 500px;
   background: #0072a8;
+}
+
+.sortButton:hover,
+.stopButton:hover {
+  box-shadow: 0 0 10px #00ff22, 0 0 20px #00ff22, 0 0 30px #00ff22;
 }
 
 .sorting input::placeholder {

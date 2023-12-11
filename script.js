@@ -1,12 +1,23 @@
+let stopFlag = false; // Флаг для остановки сортировки
+
 // Функция задержки выполнения асинхронного кода на указанное количество миллисекунд
 async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// Получение ссылки на кнопку "Сортировать"
+const stopButton = document.getElementById("stopButton");
+
+function stopSort() {
+  stopFlag = true;
+}
+
+stopButton.addEventListener("click", () => {
+  // Вызов функции остановки сортировки (если такая функция имеется)
+  stopSort();
+});
+
 const sortButton = document.getElementById("sortButton");
 
-// Навешивание обработчика клика
 sortButton.addEventListener("click", async () => {
   // Вызов функции сортировки
   await sort();
@@ -14,6 +25,7 @@ sortButton.addEventListener("click", async () => {
 
 // Основная функция для запуска сортировки в зависимости от выбранного алгоритма
 async function sort() {
+  stopFlag = false;
   // Получение входных данных и выбранного алгоритма сортировки
   const inputNumbers = document.getElementById("inputNumbers").value;
   const numbers = inputNumbers.split(",").map(Number);
@@ -48,8 +60,8 @@ async function sort() {
 // Алгоритм сортировки пузырьком
 async function bubbleSort(numbers, visualizationDiv) {
   // Вложенные циклы для прохода по массиву и сравнения/обмена элементов
-  for (let i = 0; i < numbers.length - 1; i++) {
-    for (let j = 0; j < numbers.length - 1 - i; j++) {
+  for (let i = 0; i < numbers.length - 1 && !stopFlag; i++) {
+    for (let j = 0; j < numbers.length - 1 - i && !stopFlag; j++) {
       // Визуализация текущих сравниваемых элементов
       await visualize(numbers, visualizationDiv, j, j + 1);
 
@@ -72,11 +84,11 @@ async function bubbleSort(numbers, visualizationDiv) {
 // Алгоритм сортировки вставками
 async function insertionSort(numbers, visualizationDiv) {
   // Цикл для прохода по массиву и вставки элементов на правильные позиции
-  for (let i = 1; i < numbers.length; i++) {
+  for (let i = 1; i < numbers.length && !stopFlag; i++) {
     let key = numbers[i];
     let j = i - 1;
 
-    while (j >= 0 && numbers[j] > key) {
+    while (j >= 0 && numbers[j] > key && !stopFlag) {
       // Визуализация текущих сравниваемых элементов
       await visualize(numbers, visualizationDiv, j + 1, j);
 
@@ -96,9 +108,9 @@ async function insertionSort(numbers, visualizationDiv) {
 // Алгоритм сортировки выбором
 async function selectionSort(numbers, visualizationDiv) {
   // Вложенные циклы для поиска минимального элемента и обмена с текущим
-  for (let i = 0; i < numbers.length - 1; i++) {
+  for (let i = 0; i < numbers.length - 1 && !stopFlag; i++) {
     let minIndex = i;
-    for (let j = i + 1; j < numbers.length; j++) {
+    for (let j = i + 1; j < numbers.length && !stopFlag; j++) {
       // Визуализация текущих сравниваемых элементов
       await visualize(numbers, visualizationDiv, minIndex, j);
 
@@ -122,7 +134,7 @@ async function selectionSort(numbers, visualizationDiv) {
 // Алгоритм быстрой сортировки
 async function quickSort(numbers, visualizationDiv, low, high) {
   // Рекурсивное разделение и сортировка подмассивов
-  if (low < high) {
+  if (low < high && !stopFlag) {
     const partitionIndex = await partition(
       numbers,
       visualizationDiv,
@@ -140,7 +152,7 @@ async function partition(numbers, visualizationDiv, low, high) {
   const pivot = numbers[high];
   let i = low - 1;
 
-  for (let j = low; j <= high - 1; j++) {
+  for (let j = low; j <= high - 1 && !stopFlag; j++) {
     // Визуализация текущих сравниваемых элементов
     await visualize(numbers, visualizationDiv, j, high);
 
@@ -163,22 +175,19 @@ async function partition(numbers, visualizationDiv, low, high) {
   // Визуализация обмена
   await visualize(numbers, visualizationDiv, i + 1, high, true);
   await showCompletion(visualizationDiv);
-
   return i + 1;
 }
 
 // Алгоритм сортировки слиянием
 async function mergeSort(numbers, visualizationDiv, left, right) {
   // Рекурсивное разделение и сортировка подмассивов, затем их слияние
-  if (left < right) {
+  if (left < right && !stopFlag) {
     const mid = Math.floor((left + right) / 2);
 
     await mergeSort(numbers, visualizationDiv, left, mid);
     await mergeSort(numbers, visualizationDiv, mid + 1, right);
 
     await merge(numbers, visualizationDiv, left, mid, right);
-    // Завершение визуализации сортировки
-    await showCompletion(visualizationDiv);
   }
 }
 
@@ -203,10 +212,10 @@ async function merge(numbers, visualizationDiv, left, mid, right) {
   let k = left;
 
   // Слияние двух подмассивов в основной массив
-  while (i < n1 && j < n2) {
+  while (i < n1 && j < n2 && !stopFlag) {
     // Визуализация текущих сравниваемых элементов
     await visualize(numbers, visualizationDiv, left + i, mid + 1 + j);
-
+    await showCompletion(visualizationDiv);
     if (leftArray[i] <= rightArray[j]) {
       numbers[k] = leftArray[i];
       i++;
@@ -217,22 +226,24 @@ async function merge(numbers, visualizationDiv, left, mid, right) {
 
     // Визуализация обмена
     await visualize(numbers, visualizationDiv, k, k, true);
-
+    await showCompletion(visualizationDiv);
     k++;
   }
 
   // Добавление оставшихся элементов из левого подмассива
-  while (i < n1) {
+  while (i < n1 && !stopFlag) {
     numbers[k] = leftArray[i];
     await visualize(numbers, visualizationDiv, k, k, true);
+    await showCompletion(visualizationDiv);
     i++;
     k++;
   }
 
   // Добавление оставшихся элементов из правого подмассива
-  while (j < n2) {
+  while (j < n2 && !stopFlag) {
     numbers[k] = rightArray[j];
     await visualize(numbers, visualizationDiv, k, k, true);
+    await showCompletion(visualizationDiv);
     j++;
     k++;
   }
