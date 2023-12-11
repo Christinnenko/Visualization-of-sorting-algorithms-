@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA7/8AAO//AADj/wAA7+8AAOHHAAD/xwAA/6sAAP/vAAD/7wAA7e8AAO3vAADh/wAA7f8AAPP/AAD//wAA"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Визуализация сортировки</title>
+  </head>
+  <body>
+    <div class="sorting-conteiner">
+      <h1>Визуализация алгоритмов сортировки</h1>
+      <div class="sorting">
+        <div class="sorting__content">
+          <h2>Введите числа через запятую:</h2>
+          <input type="text" id="inputNumbers" placeholder="5, 3, 8, 2, 1" />
+
+          <h2>Выберите тип сортировки:</h2>
+          <select id="sortingAlgorithm">
+            <option value="bubble">Сортировка пузырьком</option>
+            <option value="insertion">Сортировка вставками</option>
+            <option value="selection">Сортировка выбором</option>
+            <option value="quick">Быстрая сортировка</option>
+            <option value="merge">Сортировка слиянием</option>
+          </select>
+
+          <button class="sortButton" id="sortButton">Сортировать</button>
+        </div>
+        <div id="visualization"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
