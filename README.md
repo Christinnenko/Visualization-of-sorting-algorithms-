@@ -1,1 +1,7 @@
-# https://christinnenko.github.io/Visualization-of-sorting-algorithms-/
+# Визуализация алгоритмов сортировки
+
+## Визуализация алгоритмов сортировки - реализована визуализация шагов алгоритмов сортировки: сортировка пузырьком, вставками, выбором, слиянием и быстрая сортировка. Позвользователь может выбрать массив чисел и алгоритм сортировки, а также запускать и останавливать анимацию сортировки.
+
+### Деплой проекта: https://christinnenko.github.io/Visualization-of-sorting-algorithms-/
+
+![image](https://github.com/Christinnenko/Visualization-of-sorting-algorithms-/assets/135636897/7ac54f35-d4c6-4b98-9cf3-87d44797128d)
