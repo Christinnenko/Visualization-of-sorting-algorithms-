@@ -5,3 +5,10 @@
 ### Деплой проекта: https://christinnenko.github.io/Visualization-of-sorting-algorithms-/
 
 ![image](https://github.com/Christinnenko/Visualization-of-sorting-algorithms-/assets/135636897/7ac54f35-d4c6-4b98-9cf3-87d44797128d)
+
+## Технологии:
+
+HTML, CSS, JavaScript (без использования сторонних библиотек и фреймворков согласно ТЗ)
+
+
+
